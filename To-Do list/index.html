@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<title>To-Do List</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" data-ng-init="all()">
+	<div class="content">
+		<div class="main">
+			<div class="add">
+				<input id = "id" type="text" ng-model="item" placeholder="Add an Item?" autofocus>
+				<button class="addButton" ng-click="add()">Add</button>
+			</div>
+			<br>
+			<div class="items">
+				<div ng-repeat="x in items">
+					<input type="checkbox" ng-model="x.done" ng-click="setDone(x.id)">
+					<a href="#task" ng-class="(x.done ? 'strikethrough': 'noStrike') + ($index === activeIndex ? ' active-task':'')" ng-click="setActive($index)"> {{x.task}} </a>
+					<input type="image" src="https://cdn0.iconfinder.com/data/icons/octicons/1024/x-128.png" alt="Submit"  style="float: right;width: 15px; height: 20px;" ng-click="removeItem(x.id)">
+				</div>			
+			</div>
+			<div class="rem">
+				<button class="addButton done" ng-click="remove()">Remove Done Tasks</button>
+			</div>
+
+		</div>
+		<form>
+			<div class="details">
+				<div>
+					<label> Task: </label> <span> <input id="task-title" type="text" ng-model="activeMenu.task"></span>
+				</div>
+				<div>
+					<label> Due: </label> <span><input type="text" ng-model="activeMenu.due"></span>
+				</div>
+				<div>
+					<label> Details: </label> <span><input type="text" ng-model="activeMenu.details"></span> 
+				</div>
+				<div>
+					<button type="submit" class="addButton done" ng-click="save()">Save</button>
+				</div>
+				</div>
+		</form>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+	* {
+		box-sizing: border-box;
+	}
+
+	body{
+		color: #8f8f8f;
+		background: white;
+		font-family: "Oswald", serif;
+		font-weight: 300;
+		padding: 50px  140px;
+		margin: 0;
+	}
+
+	.main{
+		background-color: #e6eeff;
+		position: absolute;
+		width: 500px;
+		min-height: 250px;
+		box-shadow: 0 10px 14px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+
+	.details{
+		float:right;
+		width: 500px;
+		background-color: #e6eeff;
+		color: black;
+		min-height: 250px;
+		display:inline-block;
+		padding-top: 40px;
+		font-size: 18px;
+		box-shadow: 0 10px 14px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+
+	.details label{
+		display: inline-block;
+	    float: left;
+	    clear: left;
+	    width: 100px;
+	    text-align: right;
+	}
+	.details input{
+		display: inline-block;
+  		float: left;
+		margin-left: 40px;
+	}
+	.details div{
+		padding-bottom: 30px;
+	}
+
+	.add{
+		text-align: center;
+	}
+
+	.add input{
+		text-align: center;
+		font-family: "Courier New";
+		width: 420px;
+		height: 50px;
+		font-size: 18px;
+		text-decoration: none;
+	}
+	
+	.addButton{
+		background-color: white;
+		color: black;
+		border: 2px solid #333;
+		border: none;
+		font-family: "Cinzel";
+		width:80px;
+		height: 50px;
+		text-align: center;
+		text-decoration: none;
+		float: right;
+		font-size: 16px;
+		transition-duration: 0.4s;
+		cursor: pointer;
+	}
+	
+	.done{
+		width: 100px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		margin-right: 10px;
+	}
+
+	.addButton:hover {
+		background-color: #333;
+		color: white;
+		
+	}
+
+	.items{
+		font-family: "Courier New";
+		color: black;
+		font-size: 18px;
+	}
+
+	.strikethrough {
+		text-decoration: line-through;
+	}
+	
+	.noStrike{
+		text-decoration: none;
+	}
+
+	.active-task {
+		font-weight: bold;
+	}
