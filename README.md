@@ -1,8 +1,8 @@
 # training101
 
-Starting out with angularjs, java hibernate and jdbc
+Starting out with angularjs, jdbc and java hibernate
 
 Contains:
-- Java Hibernate Example
 - jdbc Example
+- Java Hibernate Example
 - A Simple To-Do list as a practice
