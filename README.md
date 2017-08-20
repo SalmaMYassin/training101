@@ -1,6 +1,7 @@
 # training101
 
-Starting out with angularjs, jdbc and java hibernate
+Starting out with RESTful applications
+Practicing angularjs, jdbc and java hibernate
 
 Contains:
 - jdbc Example
