@@ -2,7 +2,7 @@
 	app.controller('myCtrl', function($scope, $http){
 
 		$scope.all = function(){
-			$http.get("http://localhost:8080/Trial/Trial/tasks/all")
+			$http.get("http://localhost:8080/anotherOne/app/tasks/all")
 			.then(function(response) {
 				$scope.items = response.data;
 				$scope.setActive(0);
@@ -13,7 +13,7 @@
 			var dataObj = {
 				task: $scope.item
 			}
-			$http.post('http://localhost:8080/Trial/Trial/tasks/add',dataObj)
+			$http.post('http://localhost:8080/anotherOne/app/tasks/add',dataObj)
 			.then(function(response){
 				$scope.all();
 			})
@@ -30,39 +30,45 @@
 		$scope.remove = function(){
 			// send a request to the backend to remove all done tasks
 			
-			$http.get('http://localhost:8080/Trial/Trial/tasks/deletedone/'
+			$http.get('http://localhost:8080/anotherOne/app/tasks/deletedone/'
 				).then(function(response) {
 					$scope.all();
 				});
-		}
+			}
+			
+			$scope.setDone = function(item){
+				$http.get('http://localhost:8080/anotherOne/app/tasks/done/'+ item);
+			}
 
-		$scope.setDone = function(item){
-			$http.get('http://localhost:8080/Trial/Trial/tasks/done/'+ item);
-		}
+			$scope.removeItem = function(id){
 
-		$scope.removeItem = function(id){
-
-			if (confirm("Are you sure you want to delete this task?")) {
-				$http.get('http://localhost:8080/Trial/Trial/tasks/delete/'+ id
-					).then(function(response) {
-						$scope.all();
-					});
-				} 
+				if (confirm("Are you sure you want to delete this task?")) {
+					$http.get('http://localhost:8080/anotherOne/app/tasks/delete/'+ id
+						).then(function(response) {
+							$scope.all();
+						});
+					} 
 
 		//send the task name or index to backend to remove it from the list	
+	}
+
+	$scope.setActive = function(index) {
+		$scope.activeIndex = index;
+		$scope.activeMenu = JSON.parse(JSON.stringify($scope.items[index]));
+		if($scope.activeMenu.due != null){
+			var newDate=$scope.activeMenu.due.toString().replace("/","-");
+			$scope.activeMenu.due = new Date(newDate);
+			// console.log($scope.activeMenu.due);
 		}
+		var taskTitle = $('#task-title');
+		taskTitle.focus();
+	}
 
-		$scope.setActive = function(index) {
-			$scope.activeIndex = index;
-			$scope.activeMenu = JSON.parse(JSON.stringify($scope.items[index]));
-
-			var taskTitle = $('#task-title');
-			taskTitle.focus();
-		}
-
-		$scope.save = function() {
+	$scope.save = function() {
+			// $scope.activeMenu.$due = $scope.activeMenu.$due.toUTCString();
 			var dataObj = $scope.activeMenu;
-			$http.post('http://localhost:8080/Trial/Trial/tasks/update/' + $scope.activeMenu.id, dataObj)
+			// console.log(new Date(dataObj.due).toLocaleDateString());
+			$http.post('http://localhost:8080/anotherOne/app/tasks/update/' + $scope.activeMenu.id, dataObj)
 			.then(function(response){
 				$scope.all();
 				alert("Task Saved!");
